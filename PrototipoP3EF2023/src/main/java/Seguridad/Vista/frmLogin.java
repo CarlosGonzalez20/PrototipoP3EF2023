@@ -5,8 +5,6 @@
  */
 package Seguridad.Vista;
 
-import Inventarios.Vista.MdiInventario;
-import Cuentas_Corrientes.Vista.MdiCCorrientes;
 import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
 
@@ -14,9 +12,7 @@ import javax.swing.JOptionPane;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
-import Ventas.Vista.MdiVentas;
 import Bancos.Vista.MdiBancos;
-import Cuentas_Corrientes.Vista.MdiCCorrientes;
 /**
  *
  * @author visitante
@@ -86,14 +82,12 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel4.setText("Departamento");
 
-
-        cboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bancos", "Compras", "Cuentas Corrientes", "Inventarios", "Seguridad", "Ventas" }));
+        cboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bancos", "ExaFinal", "Seguridad", " " }));
         cboOpciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboOpcionesActionPerformed(evt);
             }
         });
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,27 +204,9 @@ public class frmLogin extends javax.swing.JFrame {
                             System.out.println(e);
                         }   
                         break;
-                        case "Compras":
+                        case "ExaFinal":
                         try {
-                            MdiSeguridad menu = new MdiSeguridad();
-                            menu.setVisible(true);
-                            this.dispose();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }   
-                        break;
-                        case "Cuentas Corrientes":
-                        try {
-                            MdiCCorrientes menu = new MdiCCorrientes();
-                            menu.setVisible(true);
-                            this.dispose();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }   
-                        break;
-                        case "Inventarios":
-                        try {
-                            MdiInventario menu = new MdiInventario();
+                            MdiBancos menu = new MdiBancos();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
@@ -240,15 +216,6 @@ public class frmLogin extends javax.swing.JFrame {
                         case "Seguridad":
                         try {
                             MdiSeguridad menu = new MdiSeguridad();
-                            menu.setVisible(true);
-                            this.dispose();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }   
-                        break;
-                        case "Ventas":
-                        try {
-                            MdiVentas menu = new MdiVentas();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {

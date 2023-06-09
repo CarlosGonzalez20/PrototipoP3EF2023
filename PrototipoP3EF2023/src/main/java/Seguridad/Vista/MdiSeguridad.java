@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Seguridad.Vista;
-import Cuentas_Corrientes.Vista.frmMantenimientoTransaccionesCC;
 
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
@@ -51,7 +50,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
         mantenimientoModulos = new javax.swing.JCheckBoxMenuItem();
         mantenimientoPerfiles = new javax.swing.JCheckBoxMenuItem();
         mantenimientoTipoUsuarios = new javax.swing.JCheckBoxMenuItem();
-        mITansaccionesCC = new javax.swing.JMenuItem();
         mnuProcesos = new javax.swing.JMenu();
         aplicacionesUsuarios = new javax.swing.JMenuItem();
         menuperfilUsuario = new javax.swing.JCheckBoxMenuItem();
@@ -155,14 +153,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
             }
         });
         mnuCatalogosMantenimientos.add(mantenimientoTipoUsuarios);
-
-        mITansaccionesCC.setText("Mantenimiento Transacciones CC");
-        mITansaccionesCC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mITansaccionesCCActionPerformed(evt);
-            }
-        });
-        mnuCatalogosMantenimientos.add(mITansaccionesCC);
 
         mnuCatalogos.add(mnuCatalogosMantenimientos);
 
@@ -353,15 +343,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mnuProcesosActionPerformed
 
-    private void mITansaccionesCCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mITansaccionesCCActionPerformed
-        // TODO add your handling code here:
-        frmMantenimientoTransaccionesCC ventana = new frmMantenimientoTransaccionesCC();
-        jDesktopPane1.add(ventana);
-        Dimension desktopSize = jDesktopPane1.getSize();
-        Dimension FrameSize = ventana.getSize();
-        ventana.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.             height) / 2);
-    }//GEN-LAST:event_mITansaccionesCCActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -410,7 +391,6 @@ public class MdiSeguridad extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem mIAplicacionPerfil;
-    private javax.swing.JMenuItem mITansaccionesCC;
     private javax.swing.JCheckBoxMenuItem mantenimientoAplicaciones;
     private javax.swing.JCheckBoxMenuItem mantenimientoModulos;
     private javax.swing.JCheckBoxMenuItem mantenimientoPerfiles;

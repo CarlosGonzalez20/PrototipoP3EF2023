@@ -9,7 +9,6 @@ package Bancos.Vista;
 
 import Bancos.Controlador.clsBoletaClientesBancos;
 import Bancos.Controlador.clsBancoExterno;
-import Ventas.Controlador.clsClientes;
 import Bancos.Controlador.clsConceptosBancos;
 import Bancos.Controlador.clsTipoMovimientoBancos;
 import Bancos.Controlador.clsCuentasBancos;
@@ -62,15 +61,7 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
     
     
      public void llenadoDeComboNombreCliente() {
-        clsClientes cliente = new clsClientes();
-        List<clsClientes> listaClientes = cliente.getListadoClientes();
-        cbNombreCliente.setAlignmentX(Component.CENTER_ALIGNMENT);
-        cbNombreCliente.addItem("Seleccionar...");
-        for (int i = 0; i < listaClientes.size(); i++) {
-            clsClientes clienteNombre = listaClientes.get(i);
-            String item = clienteNombre.getIdCliente() + " - " + clienteNombre.getNombreCliente();
-            cbNombreCliente.addItem(item);
-        }
+
      }
      
     /*public void llenadoConcepto() {
@@ -372,11 +363,12 @@ public class frmBoletaClientesBancos extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2)
                         .addComponent(txtFactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(txtValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txtValorDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btRegistro)
                 .addContainerGap())
