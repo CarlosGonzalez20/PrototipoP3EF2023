@@ -13,6 +13,7 @@ import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
 import Seguridad.Controlador.clsSeguridad;
 import Bancos.Vista.MdiBancos;
+import Exa.Vista.MdiExaFinal;
 /**
  *
  * @author visitante
@@ -206,7 +207,7 @@ public class frmLogin extends javax.swing.JFrame {
                         break;
                         case "ExaFinal":
                         try {
-                            MdiBancos menu = new MdiBancos();
+                            MdiExaFinal menu = new MdiExaFinal();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {

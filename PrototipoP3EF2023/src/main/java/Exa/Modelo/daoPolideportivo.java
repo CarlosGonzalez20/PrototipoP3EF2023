@@ -55,28 +55,30 @@ public class daoPolideportivo {
         return poli;
     }
 
-    public int ingresaSede(clsPolideportivo poli) {
-        Connection conn = null;
-        PreparedStatement stmt = null;
-        int rows = 0;
-        try {
-            conn = Conexion.getConnection();
-            stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, poli.getNombreSede());
-            stmt.setInt(2, poli.getCapacidadSede());
+public int ingresaSede(clsPolideportivo poli) {
+    Connection conn = null;
+    PreparedStatement stmt = null;
+    int rows = 0;
+    try {
+        conn = Conexion.getConnection();
+        stmt = conn.prepareStatement(SQL_INSERT);
+        stmt.setInt(1, poli.getIdSede());
+        stmt.setString(2, poli.getNombreSede());
+        stmt.setInt(3, poli.getCapacidadSede());
 
-            System.out.println("ejecutando query:" + SQL_INSERT);
-            rows = stmt.executeUpdate();
-            System.out.println("Registros afectados:" + rows);
-        } catch (SQLException ex) {
-            ex.printStackTrace(System.out);
-        } finally {
-            Conexion.close(stmt);
-            Conexion.close(conn);
-        }
-
-        return rows;
+        System.out.println("ejecutando query:" + SQL_INSERT);
+        rows = stmt.executeUpdate();
+        System.out.println("Registros afectados:" + rows);
+    } catch (SQLException ex) {
+        ex.printStackTrace(System.out);
+    } finally {
+        Conexion.close(stmt);
+        Conexion.close(conn);
     }
+
+    return rows;
+}
+
 
     public int actualizaSede(clsPolideportivo poli) {
         Connection conn = null;
