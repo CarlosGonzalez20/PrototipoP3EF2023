@@ -7,6 +7,7 @@ package Exa.Modelo;
 
 import Exa.Modelo.*;
 import Exa.Controlador.clsPolideportivo;
+import Seguridad.Modelo.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,25 +25,25 @@ public class daoPolideportivo {
     private static final String SQL_SELECT_NOMBRE = "SELECT ID_SEDE, NOMBRE_SEDE, CAPACIDAD FROM sede_polideportivo WHERE NOMBRE_SEDE = ?";
     private static final String SQL_SELECT_ID = "SELECT ID_SEDE, NOMBRE_SEDE, CAPACIDAD FROM sede_polideportivo WHERE ID_SEDE = ?";    
 
-    public List<clsAplicacion> consultaAplicacion() {
+    public List<clsPolideportivo> consultaSede() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<clsAplicacion> aplicaciones = new ArrayList<>();
+        List<clsPolideportivo> poli = new ArrayList<>();
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("aplid");
-                String nombre = rs.getString("aplnombre");
-                String estatus = rs.getString("aplestatus");
-                clsAplicacion aplicacion = new clsAplicacion();
-                aplicacion.setIdAplicacion(id);
-                aplicacion.setNombreAplicacion(nombre);
-                aplicacion.setEstatusAplicacion(estatus);
-                aplicaciones.add(aplicacion);
+                int id = rs.getInt("ID_SEDE");
+                String nombre = rs.getString("NOMBRE_SEDE");
+                int cap = rs.getInt("CAPACIDAD");
+                clsPolideportivo polidep = new clsPolideportivo();
+                polidep.setIdSede(id);
+                polidep.setNombreSede(nombre);
+                polidep.setCapacidadSede(cap);
+                poli.add(polidep);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -51,18 +52,18 @@ public class daoPolideportivo {
             Conexion.close(stmt);
             Conexion.close(conn);
         }
-        return aplicaciones;
+        return poli;
     }
 
-    public int ingresaAplicacion(clsAplicacion aplicacion) {
+    public int ingresaSede(clsPolideportivo poli) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, aplicacion.getNombreAplicacion());
-            stmt.setString(2, aplicacion.getEstatusAplicacion());
+            stmt.setString(1, poli.getNombreSede());
+            stmt.setInt(2, poli.getCapacidadSede());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -77,7 +78,7 @@ public class daoPolideportivo {
         return rows;
     }
 
-    public int actualizaAplicacion(clsAplicacion aplicacion) {
+    public int actualizaSede(clsPolideportivo poli) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -85,9 +86,9 @@ public class daoPolideportivo {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, aplicacion.getNombreAplicacion());
-            stmt.setString(2, aplicacion.getEstatusAplicacion());
-            stmt.setInt(3, aplicacion.getIdAplicacion());
+            stmt.setString(1, poli.getNombreSede());
+            stmt.setInt(2, poli.getCapacidadSede());
+            stmt.setInt(3, poli.getIdSede());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -102,7 +103,7 @@ public class daoPolideportivo {
         return rows;
     }
 
-    public int borrarAplicacion(clsAplicacion aplicacion) {
+    public int borrarSede(clsPolideportivo poli) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -111,7 +112,7 @@ public class daoPolideportivo {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, aplicacion.getIdAplicacion());
+            stmt.setInt(1, poli.getIdSede());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
@@ -124,27 +125,27 @@ public class daoPolideportivo {
         return rows;
     }
 
-    public clsAplicacion consultaAplicacionPorNombre(clsAplicacion aplicacion) {
+    public clsPolideportivo consultaPoliPorNombre(clsPolideportivo poli) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + aplicacion);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + poli);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
             //stmt.setInt(1, aplicacion.getIdAplicacion());            
-            stmt.setString(1, aplicacion.getNombreAplicacion());
+            stmt.setString(1, poli.getNombreSede());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("aplid");
-                String nombre = rs.getString("aplnombre");
-                String estatus = rs.getString("aplestatus");
+                int id = rs.getInt("ID_SEDE");
+                String nombre = rs.getString("NOMBRE_SEDE");
+                int cap = rs.getInt("CAPACIDAD");
 
                 //aplicacion = new clsAplicacion();
-                aplicacion.setIdAplicacion(id);
-                aplicacion.setNombreAplicacion(nombre);
-                aplicacion.setEstatusAplicacion(estatus);
-                System.out.println(" registro consultado: " + aplicacion);                
+                poli.setIdSede(id);
+                poli.setNombreSede(nombre);
+                poli.setCapacidadSede(cap);
+                System.out.println(" registro consultado: " + poli);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -156,29 +157,29 @@ public class daoPolideportivo {
         }
 
         //return personas;  // Si se utiliza un ArrayList
-        return aplicacion;
+        return poli;
     }
-    public clsAplicacion consultaAplicacionPorId(clsAplicacion aplicacion) {
+    public clsPolideportivo consultaPoliPorId(clsPolideportivo poli) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + aplicacion);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + poli);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, aplicacion.getIdAplicacion());            
+            stmt.setInt(1, poli.getIdSede());            
             //stmt.setString(1, aplicacion.getNombreAplicacion());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("aplid");
-                String nombre = rs.getString("aplnombre");
-                String estatus = rs.getString("aplestatus");
+                int id = rs.getInt("ID_SEDE");
+                String nombre = rs.getString("NOMBRE_SEDE");
+                int cap = rs.getInt("CAPACIDAD");
 
                 //aplicacion = new clsAplicacion();
-                aplicacion.setIdAplicacion(id);
-                aplicacion.setNombreAplicacion(nombre);
-                aplicacion.setEstatusAplicacion(estatus);
-                System.out.println(" registro consultado: " + aplicacion);                
+                poli.setIdSede(id);
+                poli.setNombreSede(nombre);
+                poli.setCapacidadSede(cap);
+                System.out.println(" registro consultado: " + poli);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -190,6 +191,6 @@ public class daoPolideportivo {
         }
 
         //return personas;  // Si se utiliza un ArrayList
-        return aplicacion;
+        return poli;
     }    
 }

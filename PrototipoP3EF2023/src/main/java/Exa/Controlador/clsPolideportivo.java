@@ -73,7 +73,7 @@ public class clsPolideportivo {
     public List<clsPolideportivo> getListadoSedes()
     {
         daoPolideportivo daopoli = new daoPolideportivo();
-        List<clsPolideportivo> listadoSedes = daopoli.consultaPolideportivo();
+        List<clsPolideportivo> listadoSedes = daopoli.consultaSede();
         return listadoSedes;
     }
     public int setBorrarSede(clsPolideportivo poli)
