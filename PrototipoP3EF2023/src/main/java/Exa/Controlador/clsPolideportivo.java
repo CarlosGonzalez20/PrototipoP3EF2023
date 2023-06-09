@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Exa.Controlador;
-import Seguridad.Controlador.*;
+import Exa.Modelo.*;
 import java.util.List;
 import Seguridad.Modelo.daoAplicacion;
 /**
@@ -13,82 +13,82 @@ import Seguridad.Modelo.daoAplicacion;
  */
 
 public class clsPolideportivo {
-    private int IdAplicacion;
-    private String NombreAplicacion;
-    private String EstatusAplicacion;
-    
-
-    public int getIdAplicacion() {
-        return IdAplicacion;
-    }
-
-    public void setIdAplicacion(int IdAplicacion) {
-        this.IdAplicacion = IdAplicacion;
-    }
-
-    public String getNombreAplicacion() {
-        return NombreAplicacion;
-    }
-
-    public void setNombreAplicacion(String NombreAplicacion) {
-        this.NombreAplicacion = NombreAplicacion;
-    }
-
-    public String getEstatusAplicacion() {
-        return EstatusAplicacion;
-    }
-
-    public void setEstatusAplicacion(String EstatusAplicacion) {
-        this.EstatusAplicacion = EstatusAplicacion;
-    }
-
-    public clsPolideportivo(int IdAplicacion, String NombreAplicacion, String EstatusAplicacion) {
-        this.IdAplicacion = IdAplicacion;
-        this.NombreAplicacion = NombreAplicacion;
-        this.EstatusAplicacion = EstatusAplicacion;
-    }
-
-    public clsPolideportivo(int IdAplicacion, String NombreAplicacion) {
-        this.IdAplicacion = IdAplicacion;
-        this.NombreAplicacion = NombreAplicacion;
-    }
-
-    public clsPolideportivo(int IdAplicacion) {
-        this.IdAplicacion = IdAplicacion;
-    }
+    private int IdSede;
+    private String NombreSede;
+    private int CapacidadSede;
 
     public clsPolideportivo() {
     }
+
+    public clsPolideportivo(int IdSede) {
+        this.IdSede = IdSede;
+    }
+
+    public clsPolideportivo(int IdSede, String NombreSede) {
+        this.IdSede = IdSede;
+        this.NombreSede = NombreSede;
+    }
+
+    public clsPolideportivo(int IdSede, String NombreSede, int CapacidadSede) {
+        this.IdSede = IdSede;
+        this.NombreSede = NombreSede;
+        this.CapacidadSede = CapacidadSede;
+    }
+
+    public int getIdSede() {
+        return IdSede;
+    }
+
+    public void setIdSede(int IdSede) {
+        this.IdSede = IdSede;
+    }
+
+    public String getNombreSede() {
+        return NombreSede;
+    }
+
+    public void setNombreSede(String NombreSede) {
+        this.NombreSede = NombreSede;
+    }
+
+    public int getCapacidadSede() {
+        return CapacidadSede;
+    }
+
+    public void setCapacidadSede(int CapacidadSede) {
+        this.CapacidadSede = CapacidadSede;
+    }
+  
     //Metodos de acceso a la capa controlador
-    public clsPolideportivo getBuscarInformacionAplicacionPorNombre(clsPolideportivo aplicacion)
+    public clsPolideportivo getBuscarInformacionPoliPorNombre(clsPolideportivo poli)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorNombre(aplicacion);
+        daoPolideportivo daopolideportivo = new daoPolideportivo();
+        return daopolideportivo.consultaPoliPorNombre(poli);
     }
-    public clsPolideportivo getBuscarInformacionAplicacionPorId(clsPolideportivo aplicacion)
+    public clsPolideportivo getBuscarInformacionPoliPorId(clsPolideportivo poli)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.consultaAplicacionPorId(aplicacion);
+        daoPolideportivo daopoli = new daoPolideportivo();
+        return daopoli.consultaPoliPorId(poli);
     }    
-    public List<clsPolideportivo> getListadoAplicaciones()
+    public List<clsPolideportivo> getListadoSedes()
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        List<clsPolideportivo> listadoUsuarios = daoAplicacion.consultaAplicacion();
-        return listadoUsuarios;
+        daoPolideportivo daopoli = new daoPolideportivo();
+        List<clsPolideportivo> listadoSedes = daopoli.consultaPolideportivo();
+        return listadoSedes;
     }
-    public int setBorrarAplicacion(clsPolideportivo aplicacion)
+    public int setBorrarSede(clsPolideportivo poli)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.borrarAplicacion(aplicacion);
+        daoPolideportivo daopoli = new daoPolideportivo();
+        return daopoli.borrarSede(poli);
     }          
-    public int setIngresarAplicacion(clsPolideportivo aplicacion)
+    public int setIngresarSede(clsPolideportivo poli)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.ingresaAplicacion(aplicacion);
+        daoPolideportivo daopoli = new daoPolideportivo();
+        return daopoli.ingresaSede(poli);
     }              
-    public int setModificarAplicacion(clsPolideportivo aplicacion)
+    public int setModificarSede(clsPolideportivo poli)
     {
-        daoAplicacion daoAplicacion = new daoAplicacion();
-        return daoAplicacion.actualizaAplicacion(aplicacion);
+        daoPolideportivo daopoli = new daoPolideportivo();
+        return daopoli.actualizaSede(poli);
     }              
 }

@@ -5,8 +5,8 @@
  */
 package Exa.Modelo;
 
-import Seguridad.Modelo.*;
-import Seguridad.Controlador.clsAplicacion;
+import Exa.Modelo.*;
+import Exa.Controlador.clsPolideportivo;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class daoPolideportivo {
 
-    private static final String SQL_SELECT = "SELECT aplid, aplnombre, aplestatus FROM tbl_aplicacion";
-    private static final String SQL_INSERT = "INSERT INTO tbl_aplicacion(aplnombre, aplestatus) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_aplicacion SET aplnombre=?, aplestatus=? WHERE aplid = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_aplicacion WHERE aplid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT aplid, aplnombre, aplestatus FROM tbl_aplicacion WHERE aplnombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT aplid, aplnombre, aplestatus FROM tbl_aplicacion WHERE aplid = ?";    
+    private static final String SQL_SELECT = "SELECT ID_SEDE, NOMBRE_SEDE, CAPACIDAD FROM sede_polideportivo";
+    private static final String SQL_INSERT = "INSERT INTO sede_polideportivo(ID_SEDE, NOMBRE_SEDE, CAPACIDAD) VALUES(?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE sede_polideportivo SET NOMBRE_SEDE=?, CAPACIDAD=? WHERE ID_SEDE = ?";
+    private static final String SQL_DELETE = "DELETE FROM sede_polideportivo WHERE ID_SEDE=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT ID_SEDE, NOMBRE_SEDE, CAPACIDAD FROM sede_polideportivo WHERE NOMBRE_SEDE = ?";
+    private static final String SQL_SELECT_ID = "SELECT ID_SEDE, NOMBRE_SEDE, CAPACIDAD FROM sede_polideportivo WHERE ID_SEDE = ?";    
 
     public List<clsAplicacion> consultaAplicacion() {
         Connection conn = null;
