@@ -7,7 +7,7 @@ package Seguridad.Vista;
 
 import Seguridad.Controlador.clsUsuario;
 import java.awt.HeadlessException;
-
+import Exa.Vista.MdiSedes;
 import javax.swing.JOptionPane;
 import Seguridad.Controlador.clsUsuarioConectado;
 import Seguridad.Controlador.clsBitacora;
@@ -82,7 +82,7 @@ public class frmLogin extends javax.swing.JFrame {
 
         jLabel4.setText("Departamento");
 
-        cboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bancos", "ExaFinal", "Seguridad", " " }));
+        cboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ExaFinal", "Seguridad" }));
         cboOpciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboOpcionesActionPerformed(evt);
@@ -194,19 +194,9 @@ public class frmLogin extends javax.swing.JFrame {
                     areaSeleccionada = cboOpciones.getSelectedItem().toString();
                     
                     switch (areaSeleccionada) {
-
-                        case "Bancos":
-                        try {
-                            MdiBancos menu = new MdiBancos();
-                            menu.setVisible(true);
-                            this.dispose();
-                        } catch (Exception e) {
-                            System.out.println(e);
-                        }   
-                        break;
                         case "ExaFinal":
                         try {
-                            MdiBancos menu = new MdiBancos();
+                            MdiSedes menu = new MdiSedes();
                             menu.setVisible(true);
                             this.dispose();
                         } catch (Exception e) {
